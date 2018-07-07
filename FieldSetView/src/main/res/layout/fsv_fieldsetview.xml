@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/fieldsetview_frame"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <FrameLayout
             android:id="@+id/fieldsetview_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></FrameLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/fieldsetview_legend"
+    <LinearLayout
+        android:id="@+id/fieldsetview_legendContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:includeFontPadding="false"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fieldsetview_legendIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@android:drawable/sym_def_app_icon"/>
+
+        <TextView
+            android:id="@+id/fieldsetview_legend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:includeFontPadding="false"
+            android:text="salam"/>
+    </LinearLayout>
 </FrameLayout>

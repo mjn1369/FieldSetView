@@ -51,7 +51,9 @@
             app:fsv_legendColor="#C2185B"
             app:fsv_legendFont="lobster.ttf"
             app:fsv_legendPosition="center"
-            app:fsv_legendSize="16sp">
+            app:fsv_legendSize="16sp"
+            app:fsv_legendIcon="@mipmap/ic_launcher"
+            app:fsv_legendIconTint="#C2185B">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -85,7 +87,7 @@
             app:fsv_legendSize="16sp"
             app:fsv_legendPosition="right"
             app:fsv_legendFont="yekan.ttf"
-            app:fsv_borderRadius="12dp"
+            app:fsv_borderRadius="6dp"
             app:fsv_borderWidth="2dp"
             app:fsv_borderAlpha="0.5"
             app:fsv_legendColor="#039BE5"

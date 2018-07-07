@@ -11,6 +11,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -18,7 +19,10 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,12 +39,17 @@ public class FieldSetView extends FrameLayout {
     private final String DEFAULT_LEGEND_COLOR = "#212121";
     private final int DEFAULT_LEGEND_MARGIN = 24;
     private final int DEFAULT_LEGEND_PADDING = 12;
+    private final int DEFAULT_ICON_MARGIN = 8;
 
-    private enum ENUM_TITLE_POSITION {LEFT, RIGHT, CENTER}
-    private ENUM_TITLE_POSITION legendPosition = ENUM_TITLE_POSITION.CENTER;
+    private enum ENUM_LEGEND_POSITION {LEFT, RIGHT, CENTER}
+    private ENUM_LEGEND_POSITION legendPosition = ENUM_LEGEND_POSITION.CENTER;
+    private enum ENUM_LEGEND_DIRECTION {LTR, RTL}
+    private ENUM_LEGEND_DIRECTION legendDirection = ENUM_LEGEND_DIRECTION.LTR;
     private TextView mLegend;
-    private RelativeLayout mFrame;
-    private FrameLayout mContainer;
+    private ImageView mIcon;
+    private ViewGroup mFrame;
+    private ViewGroup mContainer;
+    private ViewGroup mLegendContainer;
     private fsv_FrameDrawable mBackground;
     private int legendMarginLeft, legendMarginRight;
     private int legendPadding, legendPaddingLeft, legendPaddingRight;
@@ -72,6 +81,8 @@ public class FieldSetView extends FrameLayout {
         mFrame = (RelativeLayout) findViewById(R.id.fieldsetview_frame);
         mContainer = (FrameLayout) findViewById(R.id.fieldsetview_container);
         mLegend = (TextView) findViewById(R.id.fieldsetview_legend);
+        mIcon = (ImageView) findViewById(R.id.fieldsetview_legendIcon);
+        mLegendContainer = (ViewGroup) findViewById(R.id.fieldsetview_legendContainer);
         mBackground = new fsv_FrameDrawable();
 
         if(set==null)
@@ -84,13 +95,13 @@ public class FieldSetView extends FrameLayout {
         //Border Width
         mBackground.setBorder_width((int) ta.getDimension(R.styleable.FieldSetView_fsv_borderWidth, DEFAULT_BORDER_WIDTH));
 
-        //Stroke Radius
+        //Border Radius
         mBackground.setBorder_radius((int) ta.getDimension(R.styleable.FieldSetView_fsv_borderRadius, DEFAULT_BORDER_RADIUS));
 
-        //Stroke Alpha
+        //Border Alpha
         mBackground.setBorder_alpha(ta.getFloat(R.styleable.FieldSetView_fsv_borderAlpha,1f));
 
-        //Title Margins and Paddings
+        //Legend Margins and Paddings
         legendMarginLeft = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginLeft, DEFAULT_LEGEND_MARGIN);
         legendMarginRight = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginRight, DEFAULT_LEGEND_MARGIN);
         legendPadding = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendPadding, -1369f);
@@ -101,13 +112,27 @@ public class FieldSetView extends FrameLayout {
             legendPaddingRight=legendPadding;
         }
 
-        //Title text
+        //Icon
+        Drawable icon_drawable = ta.getDrawable(R.styleable.FieldSetView_fsv_legendIcon);
+        if(icon_drawable==null){
+            mIcon.setVisibility(GONE);
+        }
+        else{
+            mIcon.setVisibility(VISIBLE);
+            mIcon.setImageDrawable(icon_drawable);
+
+            //Icon Tint
+            if(ta.hasValue(R.styleable.FieldSetView_fsv_legendIconTint))
+                mIcon.setColorFilter(ta.getColor(R.styleable.FieldSetView_fsv_legendIconTint, Color.TRANSPARENT),PorterDuff.Mode.MULTIPLY);
+        }
+
+        //Legend text
         mLegend.setText(ta.getText(R.styleable.FieldSetView_fsv_legend));
 
-        //Title text color
+        //Legend text color
         mLegend.setTextColor(ta.getColor(R.styleable.FieldSetView_fsv_legendColor, Color.parseColor(DEFAULT_LEGEND_COLOR)));
 
-        //Title font
+        //Legend font
         String fontName = ta.getString(R.styleable.FieldSetView_fsv_legendFont);
         try {
             Typeface customFont = Typeface.createFromAsset(getContext().getAssets(), fontName);
@@ -122,39 +147,65 @@ public class FieldSetView extends FrameLayout {
         if(ta.hasValue(R.styleable.FieldSetView_fsv_legendPosition)){
             switch (ta.getInt(R.styleable.FieldSetView_fsv_legendPosition,3)){
                 case 1: //left
-                    legendPosition = ENUM_TITLE_POSITION.LEFT;
+                    legendPosition = ENUM_LEGEND_POSITION.LEFT;
                     break;
                 case 2: //right
-                    legendPosition = ENUM_TITLE_POSITION.RIGHT;
+                    legendPosition = ENUM_LEGEND_POSITION.RIGHT;
                     break;
                 case 3: //center
-                    legendPosition = ENUM_TITLE_POSITION.CENTER;
+                    legendPosition = ENUM_LEGEND_POSITION.CENTER;
                     break;
             }
         }
+        if(ta.hasValue(R.styleable.FieldSetView_fsv_legendDirection)){
+            switch (ta.getInt(R.styleable.FieldSetView_fsv_legendDirection,1)){
+                case 1: //ltr
+                    legendDirection = ENUM_LEGEND_DIRECTION.LTR;
+                    View view = mLegendContainer.getChildAt(0);
+                    ((LinearLayout.LayoutParams)view.getLayoutParams()).setMargins(0,0,DEFAULT_ICON_MARGIN,0);
+                    break;
+                case 2: //rtl
+                    legendDirection = ENUM_LEGEND_DIRECTION.RTL;
+                    view = mLegendContainer.getChildAt(0);
+                    mLegendContainer.removeViewAt(0);
+                    mLegendContainer.addView(view);
+                    ((LinearLayout.LayoutParams)view.getLayoutParams()).setMargins(DEFAULT_ICON_MARGIN,0,0,0);
+                    break;
+            }
+        }
+        else{
+            View view = mLegendContainer.getChildAt(0);
+            ((LinearLayout.LayoutParams)view.getLayoutParams()).setMargins(0,0,DEFAULT_ICON_MARGIN,0);
+        }
 
-        mLegend.post(new Runnable() {
+        mLegendContainer.post(new Runnable() {
             @Override
             public void run() {
                 if (mLegend.length() > 0) {
-                    if (mLegend.getMeasuredHeight() <= mBackground.getBorder_width()) {
-                        mBackground.setBorder_width((int) (mLegend.getMeasuredHeight() * 0.5));
+
+                    if(mIcon.getVisibility()==VISIBLE){
+                        mIcon.getLayoutParams().width = mLegend.getMeasuredHeight();
+                        mIcon.getLayoutParams().height = mLegend.getMeasuredHeight();
+                    }
+
+                    if (mLegendContainer.getMeasuredHeight() <= mBackground.getBorder_width()) {
+                        mBackground.setBorder_width((int) (mLegendContainer.getMeasuredHeight() * 0.5));
                         setContainerMargins(mBackground.getBorder_width());
                     }
-                    if (legendPosition == ENUM_TITLE_POSITION.RIGHT) {
-                        ((LayoutParams) mLegend.getLayoutParams()).gravity = Gravity.TOP | Gravity.RIGHT;
+                    if (legendPosition == ENUM_LEGEND_POSITION.RIGHT) {
+                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.RIGHT;
                         int margin = mBackground.getBorder_width()>=mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
-                        ((LayoutParams) mLegend.getLayoutParams()).setMargins(0, 0, margin + legendMarginRight, 0);
-                    } else if (legendPosition == ENUM_TITLE_POSITION.LEFT) {
-                        ((LayoutParams) mLegend.getLayoutParams()).gravity = Gravity.TOP | Gravity.LEFT;
+                        ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(0, 0, margin + legendMarginRight, 0);
+                    } else if (legendPosition == ENUM_LEGEND_POSITION.LEFT) {
+                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.LEFT;
                         int margin = mBackground.getBorder_width()>=mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
-                        ((LayoutParams) mLegend.getLayoutParams()).setMargins(legendMarginLeft + margin, 0, 0, 0);
+                        ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(legendMarginLeft + margin, 0, 0, 0);
                     } else {
-                        ((LayoutParams) mLegend.getLayoutParams()).gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
                     }
                     updateFrame();
                     LayoutParams frameParams = (LayoutParams) mFrame.getLayoutParams();
-                    frameParams.setMargins(0, (mLegend.getMeasuredHeight() - mBackground.getBorder_width()) / 2, 0, 0);
+                    frameParams.setMargins(0, (mLegendContainer.getMeasuredHeight() - mBackground.getBorder_width()) / 2, 0, 0);
                 }
             }
         });
@@ -182,7 +233,7 @@ public class FieldSetView extends FrameLayout {
         setPadding(0,0,0,0);
     }
 
-    // set margins to container so it fits inside frame and below the title
+    // set margins to container so it fits inside frame and below the legend
     private void setContainerMargins(int margin){
         ((RelativeLayout.LayoutParams)mContainer.getLayoutParams()).setMargins(
                 margin,
@@ -191,7 +242,7 @@ public class FieldSetView extends FrameLayout {
                 margin+(mLegend.getMeasuredHeight() - mBackground.getBorder_width()) / 2);
     }
 
-    //set frame's background and erase behind the title
+    //set frame's background and erase behind the legend
     private void updateFrame(){
         post(new Runnable() {
             @Override
@@ -214,7 +265,7 @@ public class FieldSetView extends FrameLayout {
                         bitmap = Bitmap.createBitmap(mFrame.getWidth(), mFrame.getHeight(),Bitmap.Config.ARGB_8888);
                         Canvas bitmapCanvas = new Canvas(bitmap);
                         mFrame.getBackground().draw(bitmapCanvas);
-                        eraseBitmap(bitmapCanvas, mLegend);
+                        eraseBitmap(bitmapCanvas, mLegendContainer);
                         mFrame.setBackgroundDrawable(new BitmapDrawable(bitmap));
                     }
                 });

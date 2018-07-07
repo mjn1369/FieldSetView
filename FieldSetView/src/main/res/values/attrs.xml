@@ -6,6 +6,8 @@
         <attr name="fsv_borderRadius" format="dimension"/>
         <attr name="fsv_borderAlpha" format="float"/>
         <attr name="fsv_legend" format="string"/>
+        <attr name="fsv_legendIcon" format="reference"/>
+        <attr name="fsv_legendIconTint" format="reference|color"/>
         <attr name="fsv_legendSize" format="dimension"/>
         <attr name="fsv_legendColor" format="reference|color"/>
         <attr name="fsv_legendFont" format="string"/>
@@ -18,6 +20,10 @@
             <enum name="left" value="1"/>
             <enum name="right" value="2"/>
             <enum name="center" value="3"/>
+        </attr>
+        <attr name="fsv_legendDirection" format="enum">
+            <enum name="ltr" value="1"/>
+            <enum name="rtl" value="2"/>
         </attr>
     </declare-styleable>
 </resources>
