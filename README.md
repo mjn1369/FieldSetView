@@ -11,7 +11,7 @@
 [![License][LicenseBadge]][ProjectLicenceUrl]
 [![JitpackBadge]][JitpackUrl]
 
-FieldSetView is an Android custom view which mimics the "fieldset" tag in html.
+```FieldSetView``` is an Android custom view which mimics the "fieldset" tag in HTML.
 
 ## Download
 ### Gradle:
@@ -34,7 +34,7 @@ dependencies {
 ```
 
 ## Usage
-
+Coming Soon
  
  ```
 Copyright 2018 mjn1369
