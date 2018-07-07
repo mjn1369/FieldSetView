@@ -5,15 +5,15 @@ group='com.github.mjn1369'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'fieldset'
+    bintrayName = 'fieldsetview'
 
-    publishedGroupId = 'libs.mjn.fieldset'
-    libraryName = 'FieldSet'
+    publishedGroupId = 'libs.mjn.fieldsetview'
+    libraryName = 'FieldSetView'
 
-    libraryDescription = "FieldSet is a customizable equivalent of 'fieldset' in HTML."
+    libraryDescription = "FieldSetView is an Android custom view which mimics the \"fieldset\" tag in html."
 
-    siteUrl = 'https://github.com/mjn1369/FieldSet'
-    gitUrl = 'https://github.com/mjn1369/FieldSet.git'
+    siteUrl = 'https://github.com/mjn1369/FieldSetView'
+    gitUrl = 'https://github.com/mjn1369/FieldSetView.git'
 
     libraryVersion = '1.0.0'
 
@@ -31,7 +31,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 10
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

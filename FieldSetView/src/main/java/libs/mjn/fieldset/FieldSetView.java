@@ -22,10 +22,12 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import libs.mjn.fieldsetview.R;
+
 /**
  * Created by mJafarinejad on 7/1/2018.
  */
-public class FieldSet extends FrameLayout {
+public class FieldSetView extends FrameLayout {
 
     private final int DEFAULT_BORDER_WIDTH = 2;
     private final int DEFAULT_BORDER_RADIUS = 0;
@@ -39,86 +41,86 @@ public class FieldSet extends FrameLayout {
     private TextView mLegend;
     private RelativeLayout mFrame;
     private FrameLayout mContainer;
-    private fs_FrameDrawable mBackground;
+    private fsv_FrameDrawable mBackground;
     private int legendMarginLeft, legendMarginRight;
     private int legendPadding, legendPaddingLeft, legendPaddingRight;
     private Bitmap bitmap;
 
-    public FieldSet(Context context) {
+    public FieldSetView(Context context) {
         super(context);
         init(null);
     }
 
-    public FieldSet(Context context, @Nullable AttributeSet attrs) {
+    public FieldSetView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
     }
 
-    public FieldSet(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public FieldSetView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public FieldSet(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public FieldSetView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
 
     private void init(@Nullable AttributeSet set){
-        inflate(getContext(),R.layout.fs_fieldset,this);
-        mFrame = (RelativeLayout) findViewById(R.id.fieldset_frame);
-        mContainer = (FrameLayout) findViewById(R.id.fieldset_container);
-        mLegend = (TextView) findViewById(R.id.fieldset_legend);
-        mBackground = new fs_FrameDrawable();
+        inflate(getContext(), R.layout.fsv_fieldsetview,this);
+        mFrame = (RelativeLayout) findViewById(R.id.fieldsetview_frame);
+        mContainer = (FrameLayout) findViewById(R.id.fieldsetview_container);
+        mLegend = (TextView) findViewById(R.id.fieldsetview_legend);
+        mBackground = new fsv_FrameDrawable();
 
         if(set==null)
             return;
-        TypedArray ta = getContext().obtainStyledAttributes(set,R.styleable.FieldSet);
+        TypedArray ta = getContext().obtainStyledAttributes(set,R.styleable.FieldSetView);
 
         //Border Color
-        mBackground.setBorder_color(ta.getColor(R.styleable.FieldSet_fs_borderColor, Color.parseColor(DEFAULT_BORDER_COLOR)));
+        mBackground.setBorder_color(ta.getColor(R.styleable.FieldSetView_fsv_borderColor, Color.parseColor(DEFAULT_BORDER_COLOR)));
 
         //Border Width
-        mBackground.setBorder_width((int) ta.getDimension(R.styleable.FieldSet_fs_borderWidth, DEFAULT_BORDER_WIDTH));
+        mBackground.setBorder_width((int) ta.getDimension(R.styleable.FieldSetView_fsv_borderWidth, DEFAULT_BORDER_WIDTH));
 
         //Stroke Radius
-        mBackground.setBorder_radius((int) ta.getDimension(R.styleable.FieldSet_fs_borderRadius, DEFAULT_BORDER_RADIUS));
+        mBackground.setBorder_radius((int) ta.getDimension(R.styleable.FieldSetView_fsv_borderRadius, DEFAULT_BORDER_RADIUS));
 
         //Stroke Alpha
-        mBackground.setBorder_alpha(ta.getFloat(R.styleable.FieldSet_fs_borderAlpha,1f));
+        mBackground.setBorder_alpha(ta.getFloat(R.styleable.FieldSetView_fsv_borderAlpha,1f));
 
         //Title Margins and Paddings
-        legendMarginLeft = (int) ta.getDimension(R.styleable.FieldSet_fs_legendMarginLeft, DEFAULT_LEGEND_MARGIN);
-        legendMarginRight = (int) ta.getDimension(R.styleable.FieldSet_fs_legendMarginRight, DEFAULT_LEGEND_MARGIN);
-        legendPadding = (int) ta.getDimension(R.styleable.FieldSet_fs_legendPadding, -1369f);
-        legendPaddingLeft = (int) ta.getDimension(R.styleable.FieldSet_fs_legendPaddingLeft, DEFAULT_LEGEND_PADDING);
-        legendPaddingRight = (int) ta.getDimension(R.styleable.FieldSet_fs_legendPaddingRight, DEFAULT_LEGEND_PADDING);
+        legendMarginLeft = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginLeft, DEFAULT_LEGEND_MARGIN);
+        legendMarginRight = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginRight, DEFAULT_LEGEND_MARGIN);
+        legendPadding = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendPadding, -1369f);
+        legendPaddingLeft = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendPaddingLeft, DEFAULT_LEGEND_PADDING);
+        legendPaddingRight = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendPaddingRight, DEFAULT_LEGEND_PADDING);
         if(legendPadding!=-1369f){
             legendPaddingLeft=legendPadding;
             legendPaddingRight=legendPadding;
         }
 
         //Title text
-        mLegend.setText(ta.getText(R.styleable.FieldSet_fs_legend));
+        mLegend.setText(ta.getText(R.styleable.FieldSetView_fsv_legend));
 
         //Title text color
-        mLegend.setTextColor(ta.getColor(R.styleable.FieldSet_fs_legendColor, Color.parseColor(DEFAULT_LEGEND_COLOR)));
+        mLegend.setTextColor(ta.getColor(R.styleable.FieldSetView_fsv_legendColor, Color.parseColor(DEFAULT_LEGEND_COLOR)));
 
         //Title font
-        String fontName = ta.getString(R.styleable.FieldSet_fs_legendFont);
+        String fontName = ta.getString(R.styleable.FieldSetView_fsv_legendFont);
         try {
             Typeface customFont = Typeface.createFromAsset(getContext().getAssets(), fontName);
             mLegend.setTypeface(customFont);
         }
         catch (Exception e){}
 
-        int titleSize = ta.getDimensionPixelSize(R.styleable.FieldSet_fs_legendSize,24);
+        int titleSize = ta.getDimensionPixelSize(R.styleable.FieldSetView_fsv_legendSize,24);
         if (titleSize > 0) {
             mLegend.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize);
         }
-        if(ta.hasValue(R.styleable.FieldSet_fs_legendPosition)){
-            switch (ta.getInt(R.styleable.FieldSet_fs_legendPosition,3)){
+        if(ta.hasValue(R.styleable.FieldSetView_fsv_legendPosition)){
+            switch (ta.getInt(R.styleable.FieldSetView_fsv_legendPosition,3)){
                 case 1: //left
                     legendPosition = ENUM_TITLE_POSITION.LEFT;
                     break;

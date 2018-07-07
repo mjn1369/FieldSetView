@@ -6,12 +6,12 @@ import android.graphics.drawable.GradientDrawable;
 /**
  * Created by mJafarinejad on 7/1/2018.
  */
-class fs_FrameDrawable extends GradientDrawable {
+class fsv_FrameDrawable extends GradientDrawable {
 
     private int border_color = Color.BLACK, border_width = 1, border_radius = 10;
     private float border_alpha = 1f;
 
-    public fs_FrameDrawable(){
+    public fsv_FrameDrawable(){
         setShape(GradientDrawable.RECTANGLE);
         setParams();
     }

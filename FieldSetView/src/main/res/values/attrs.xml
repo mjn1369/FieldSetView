@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FieldSetView">
+        <attr name="fsv_borderColor" format="reference|color"/>
+        <attr name="fsv_borderWidth" format="dimension"/>
+        <attr name="fsv_borderRadius" format="dimension"/>
+        <attr name="fsv_borderAlpha" format="float"/>
+        <attr name="fsv_legend" format="string"/>
+        <attr name="fsv_legendSize" format="dimension"/>
+        <attr name="fsv_legendColor" format="reference|color"/>
+        <attr name="fsv_legendFont" format="string"/>
+        <attr name="fsv_legendMarginLeft" format="dimension"/>
+        <attr name="fsv_legendMarginRight" format="dimension"/>
+        <attr name="fsv_legendPadding" format="dimension"/>
+        <attr name="fsv_legendPaddingLeft" format="dimension"/>
+        <attr name="fsv_legendPaddingRight" format="dimension"/>
+        <attr name="fsv_legendPosition" format="enum">
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="center" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

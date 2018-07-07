@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-          package="libs.mjn.fieldset"
+          package="libs.mjn.fieldsetview"
 >
 
     <application android:allowBackup="true"
