@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:scrollbarStyle="outsideOverlay"
+    tools:context="libs.mjn.testfieldset.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <libs.mjn.fieldset.FieldSet
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            app:fs_legend="Email"
+            app:fs_legendSize="16sp"
+            app:fs_legendPosition="left"
+            app:fs_legendFont="lobster.ttf"
+            app:fs_borderRadius="8dp">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:lines="1"
+                android:background="@null"
+                android:hint="Enter Email..."></android.support.v7.widget.AppCompatEditText>
+
+        </libs.mjn.fieldset.FieldSet>
+
+        <libs.mjn.fieldset.FieldSet
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            app:fs_borderColor="#C2185B"
+            app:fs_borderRadius="12dp"
+            app:fs_borderWidth="3dp"
+            app:fs_borderAlpha="0.75"
+            app:fs_legend="Gender"
+            app:fs_legendColor="#C2185B"
+            app:fs_legendFont="lobster.ttf"
+            app:fs_legendPosition="center"
+            app:fs_legendSize="16sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"/>
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"/>
+                </RadioGroup>
+            </RelativeLayout>
+
+        </libs.mjn.fieldset.FieldSet>
+
+        <libs.mjn.fieldset.FieldSet
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            app:fs_legend="رمز عبور"
+            app:fs_legendSize="16sp"
+            app:fs_legendPosition="right"
+            app:fs_legendFont="yekan.ttf"
+            app:fs_borderRadius="12dp"
+            app:fs_borderWidth="2dp"
+            app:fs_borderAlpha="0.5"
+            app:fs_legendColor="#039BE5"
+            app:fs_borderColor="#039BE5">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:inputType="textPassword"
+                android:background="@null"
+                android:hint="حداقل ۸ حرف..."></android.support.v7.widget.AppCompatEditText>
+
+        </libs.mjn.fieldset.FieldSet>
+
+        <libs.mjn.fieldset.FieldSet
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginTop="16dp"
+            app:fs_borderAlpha="0.75"
+            app:fs_legend="جنسیت"
+            app:fs_legendFont="yekan.ttf"
+            app:fs_legendPosition="center"
+            app:fs_legendSize="16sp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right">
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="مرد"/>
+
+                    <android.support.v7.widget.AppCompatRadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layoutDirection="rtl"
+                        android:text="زن"/>
+                </RadioGroup>
+            </RelativeLayout>
+
+        </libs.mjn.fieldset.FieldSet>
+
+    </LinearLayout>
+
+</ScrollView>

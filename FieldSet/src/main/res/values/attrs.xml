@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FieldSet">
+        <attr name="fs_borderColor" format="reference|color"/>
+        <attr name="fs_borderWidth" format="dimension"/>
+        <attr name="fs_borderRadius" format="dimension"/>
+        <attr name="fs_borderAlpha" format="float"/>
+        <attr name="fs_legend" format="string"/>
+        <attr name="fs_legendSize" format="dimension"/>
+        <attr name="fs_legendColor" format="reference|color"/>
+        <attr name="fs_legendFont" format="string"/>
+        <attr name="fs_legendMarginLeft" format="dimension"/>
+        <attr name="fs_legendMarginRight" format="dimension"/>
+        <attr name="fs_legendPadding" format="dimension"/>
+        <attr name="fs_legendPaddingLeft" format="dimension"/>
+        <attr name="fs_legendPaddingRight" format="dimension"/>
+        <attr name="fs_legendPosition" format="enum">
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="center" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

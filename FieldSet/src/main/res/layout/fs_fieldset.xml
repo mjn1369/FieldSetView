@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/fieldset_frame"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:id="@+id/fieldset_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></FrameLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/fieldset_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:background="@android:color/transparent"/>
+</FrameLayout>
