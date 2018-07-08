@@ -11,9 +11,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ((EditText)findViewById(R.id.et_password)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
-        ((RadioButton)findViewById(R.id.rb_male)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
-        ((RadioButton)findViewById(R.id.rb_female)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
+        ((EditText) findViewById(R.id.et_password)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
+        ((RadioButton) findViewById(R.id.rb_male)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
+        ((RadioButton) findViewById(R.id.rb_female)).setTypeface(Typeface.createFromAsset(getApplicationContext().getAssets(), "yekan.ttf"));
     }
 }
