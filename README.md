@@ -36,7 +36,7 @@ dependencies {
 ```
 
 ## Usage
-Add a ```FieldSetView``` to your layout just like any other ```ViewGroup```:
+Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
 
 ```xml
 <libs.mjn.fieldset.FieldSetView
@@ -61,6 +61,13 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup```:
 
         </libs.mjn.fieldset.FieldSetView>
 ```
+ 
+ If you want to change the lengend programmatically:
+ ```java
+ FieldSetView fsv = (FieldSetView) findViewById(R.id.fieldsetview);
+ fsv.setLengend("New Legend");
+ ```
+ 
  
  ```
 Copyright 2018 mjn1369
