@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:scrollbarStyle="outsideOverlay"
-    tools:context="libs.mjn.testfieldset.MainActivity">
+    tools:context="libs.mjn.testfieldsetview.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package libs.mjn.testfieldset;
+package libs.mjn.testfieldsetview;
 
 import org.junit.Test;
 

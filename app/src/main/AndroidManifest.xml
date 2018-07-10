@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="libs.mjn.testfieldset">
+          package="libs.mjn.testfieldsetview">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="libs.mjn.testfieldset.MainActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
+        <activity android:name=".MainActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

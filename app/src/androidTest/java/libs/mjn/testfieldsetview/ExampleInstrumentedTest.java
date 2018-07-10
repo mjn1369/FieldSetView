@@ -1,4 +1,4 @@
-package libs.mjn.testfieldset;
+package libs.mjn.testfieldsetview;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
