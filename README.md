@@ -62,12 +62,12 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
         </libs.mjn.fieldset.FieldSetView>
 ```
  
-If you want to change the lengend programmatically:
+If you want to set the lengend __programmatically__:
 ```java
 FieldSetView fsv = (FieldSetView) findViewById(R.id.fsv);
 fsv.setLegend("New Legend");
 ```
- 
+## Attributes
  
  ```
 Copyright 2018 mjn1369
