@@ -68,10 +68,10 @@ FieldSetView fsv = (FieldSetView) findViewById(R.id.fsv);
 fsv.setLegend("New Legend");
 ```
 ## Attributes
-|            Attribute            |            Description            |            Values            |
+|            Attribute            |            Description            |            Default            |
  | ------------------------------- | -------------------------------   | --------------------------    |
- | ```app:fsv_borderColor```| Border's Color           |Reference or Color|
- | setTitleColor(int)                | sets title's color                |  #212121 (kinda black)        |
+ | ```app:fsv_borderColor```| Border's Color|```#212121```|
+ | ```app:fsv_borderWidth```| Border's Width|```2px```|
  | setMessage(String)               | sets a message for dialog         |  ""                           |
  | setMessageColor(int)               | sets message's color              |  #212121 (kinda black)        |
  | setIcon(int)                      | sets the dialog's icon            |  "close (X)" icon             |
