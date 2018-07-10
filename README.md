@@ -62,12 +62,26 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
         </libs.mjn.fieldset.FieldSetView>
 ```
  
-If you want to set the lengend __programmatically__:
+If you want to set the legend __programmatically__:
 ```java
 FieldSetView fsv = (FieldSetView) findViewById(R.id.fsv);
 fsv.setLegend("New Legend");
 ```
 ## Attributes
+|            Attribute            |            Description            |            Values            |
+ | ------------------------------- | -------------------------------   | --------------------------    |
+ | ```app:fsv_borderColor```| Border's Color           |Reference or Color|
+ | setTitleColor(int)                | sets title's color                |  #212121 (kinda black)        |
+ | setMessage(String)               | sets a message for dialog         |  ""                           |
+ | setMessageColor(int)               | sets message's color              |  #212121 (kinda black)        |
+ | setIcon(int)                      | sets the dialog's icon            |  "close (X)" icon             |
+ | setIconTint(int)                 | sets tint for dialog's icon       |  #1976D2 (kinda blue)         |
+ | setIconCallback(PrettyDialogCallback)              | sets dialog's icon callback       |  dismiss dialog               |
+ | setIcon(int,int,PrettyDialogCallback)                 | sets icon,icon tint,icon callback |                               |
+ | addButton(String,int,int,PrettyDialogCallback)                   | adds button with text,text color,background color and callback|   |
+ | setTypeface(Typeface)                  | sets typeface for all texts       |                               |
+ | setAnimationEnabled(boolean)       | enables or disables dialog animation| Enabled                     |
+ | setGravity(int)       | sets the dialog's gravity (TOP, BOTTOM, CENTER,...)| Gravity.CENTER                     |
  
 ## License
  ```
