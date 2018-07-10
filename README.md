@@ -36,7 +36,31 @@ dependencies {
 ```
 
 ## Usage
-Coming Soon
+Add a ```FieldSetView``` to your layout just like any other ```ViewGroup```:
+
+```xml
+<libs.mjn.fieldset.FieldSetView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:fsv_borderAlpha="0.75"
+            app:fsv_borderColor="#C2185B"
+            app:fsv_borderRadius="12dp"
+            app:fsv_borderWidth="3dp"
+            app:fsv_legend="Gender"
+            app:fsv_legendColor="#C2185B"
+            app:fsv_legendFont="lobster.ttf"
+            app:fsv_legendIcon="@drawable/ic_gender"
+            app:fsv_legendIconTint="#C2185B"
+            app:fsv_legendPosition="center"
+            app:fsv_legendSize="16sp"
+            app:fsv_legendDirection="ltr">
+
+            <!-- Child Views Go Here -->
+
+        </libs.mjn.fieldset.FieldSetView>
+```
  
  ```
 Copyright 2018 mjn1369
