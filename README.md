@@ -69,6 +69,7 @@ fsv.setLegend("New Legend");
 ```
 ## Attributes
  
+## License
  ```
 Copyright 2018 mjn1369
 
