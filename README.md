@@ -50,7 +50,6 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
             app:fsv_borderWidth="3dp"
             app:fsv_legend="Gender"
             app:fsv_legendColor="#C2185B"
-            <!-- Path to your font in Assets folder -->
             app:fsv_legendFont="lobster.ttf"
             app:fsv_legendIcon="@drawable/ic_gender"
             app:fsv_legendIconTint="#C2185B"
@@ -80,7 +79,9 @@ fsv.setLegend("New Legend");
  |```app:fsv_legendColor```|Legend's Text Color|```#212121```|
  |```app:fsv_legendFont```|Legend's Text Font||
  |```app:fsv_legendIcon```|FieldsetView's Icon||
- |```fsv_legendIconTint```|Icon's Tint|```app:fsv_legend```'s Text Color|
+ |```app:fsv_legendIconTint```|Icon's Tint|```app:fsv_legend```'s Text Color|
+ |```app:fsv_legendPosition```|Legend's Position|```left``` ```center``` ```right```|
+ |```app:fsv_legendMarginLeft```|Legend's Left Margin|```16px``` if Position is left, ```0``` otherwise|
  
 ## License
  ```
