@@ -62,7 +62,7 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
 
         </libs.mjn.fieldset.FieldSetView>
 ```
-###```FieldSetView``` extends ```FrameLayout```
+### ```FieldSetView``` extends ```FrameLayout```
 
 If you want to __set the legend programmatically__:
 ```java
