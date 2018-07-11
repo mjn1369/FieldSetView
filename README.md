@@ -81,7 +81,12 @@ fsv.setLegend("New Legend");
  |```app:fsv_legendIcon```|FieldsetView's Icon||
  |```app:fsv_legendIconTint```|Icon's Tint|```app:fsv_legend```'s Text Color|
  |```app:fsv_legendPosition```|Legend's Position|```left``` ```center``` ```right```|
- |```app:fsv_legendMarginLeft```|Legend's Left Margin|```16px``` if Position is left, ```0``` otherwise|
+ |```app:fsv_legendDirection```|Legend's Layout Direction|```ltr``` ```rtl```|
+ |```app:fsv_legendMarginLeft```|Legend's Left Margin|```16px``` if Position is ```Left```, ```0``` Otherwise|
+ |```app:fsv_legendMarginRight```|Legend's Right Margin|```16px``` if Position is ```Right```, ```0``` Otherwise|
+ |```app:fsv_legendPadding```|Legend's Left and Right Padding|```12px```|
+ |```app:fsv_legendPaddingLeft```|Legend's Left Padding|```12px```|
+ |```app:fsv_legendPaddingRight```|Legend's Right Padding|```12px```|
  
 ## License
  ```
