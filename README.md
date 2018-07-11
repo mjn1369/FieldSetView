@@ -75,13 +75,11 @@ fsv.setLegend("New Legend");
  | ```app:fsv_borderRadius```|Border's Radius|```0px```|
  | ```app:fsv_borderAlpha```|Border's Alpha|```1```|
  |```app:fsv_legend```|FieldSetView's Legend Text|```""```|
- | setIconTint(int)                 | sets tint for dialog's icon       |  #1976D2 (kinda blue)         |
- | setIconCallback(PrettyDialogCallback)              | sets dialog's icon callback       |  dismiss dialog               |
- | setIcon(int,int,PrettyDialogCallback)                 | sets icon,icon tint,icon callback |                               |
- | addButton(String,int,int,PrettyDialogCallback)                   | adds button with text,text color,background color and callback|   |
- | setTypeface(Typeface)                  | sets typeface for all texts       |                               |
- | setAnimationEnabled(boolean)       | enables or disables dialog animation| Enabled                     |
- | setGravity(int)       | sets the dialog's gravity (TOP, BOTTOM, CENTER,...)| Gravity.CENTER                     |
+ |```app:fsv_legendSize```|Legend's Text Size|```12sp```|
+ |```app:fsv_legendColor```|Legend's Text Color|```#212121```|
+ |```app:fsv_legendFont```|Legend's Text Font||
+ |```app:fsv_legendIcon```|FieldsetView's Icon||
+ |```fsv_legendIconTint```|Icon's Tint|```app:fsv_legend```'s Text Color|
  
 ## License
  ```
