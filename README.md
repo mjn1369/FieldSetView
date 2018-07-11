@@ -91,6 +91,8 @@ fsv.setLegend("New Legend");
  |```app:fsv_legendPaddingLeft```|Legend's Left Padding|```12px```|
  |```app:fsv_legendPaddingRight```|Legend's Right Padding|```12px```|
  
+ cheers :beers:
+ 
 ## License
  ```
 Copyright 2018 mjn1369
