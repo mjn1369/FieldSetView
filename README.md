@@ -11,6 +11,7 @@
 [![License][LicenseBadge]][ProjectLicenceUrl]
 [![JitpackBadge]][JitpackUrl]
 
+
 ```FieldSetView``` is an Android custom view which mimics the "fieldset" tag in HTML.
 
 <img src="https://github.com/mjn1369/FieldSetView/blob/master/Screenshot/screenshot.png" width="450" alt="Screenshot">
@@ -62,7 +63,7 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
         </libs.mjn.fieldset.FieldSetView>
 ```
  
-If you want to set the legend __programmatically__:
+If you want to __set the legend programmatically__:
 ```java
 FieldSetView fsv = (FieldSetView) findViewById(R.id.fsv);
 fsv.setLegend("New Legend");
