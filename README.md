@@ -38,7 +38,8 @@ dependencies {
 
 ## Usage
 Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
-(__Note:___ ```FieldSetView``` extends ```FrameLayout```)
+
+(__Note:__ ```FieldSetView``` extends ```FrameLayout```)
 
 ```xml
 <libs.mjn.fieldset.FieldSetView
