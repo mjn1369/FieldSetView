@@ -12,7 +12,8 @@
 [![JitpackBadge]][JitpackUrl]
 
 ```FieldSetView``` is an Android custom view which mimics the "fieldset" tag in HTML.
-![alt text](https://github.com/mjn1369/FieldSetView/blob/master/Screenshot/screenshot.png)
+
+<img src="https://github.com/mjn1369/FieldSetView/blob/master/Screenshot/screenshot.png" width="450" alt="Screenshot">
 
 ## Download
 ### Gradle:
@@ -35,8 +36,59 @@ dependencies {
 ```
 
 ## Usage
-Coming Soon
+Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
+
+```xml
+<libs.mjn.fieldset.FieldSetView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            app:fsv_borderAlpha="0.75"
+            app:fsv_borderColor="#C2185B"
+            app:fsv_borderRadius="12dp"
+            app:fsv_borderWidth="3dp"
+            app:fsv_legend="Gender"
+            app:fsv_legendColor="#C2185B"
+            app:fsv_legendFont="lobster.ttf"
+            app:fsv_legendIcon="@drawable/ic_gender"
+            app:fsv_legendIconTint="#C2185B"
+            app:fsv_legendPosition="center"
+            app:fsv_legendSize="16sp"
+            app:fsv_legendDirection="ltr">
+
+            <!-- Child Views Go Here -->
+
+        </libs.mjn.fieldset.FieldSetView>
+```
  
+If you want to set the legend __programmatically__:
+```java
+FieldSetView fsv = (FieldSetView) findViewById(R.id.fsv);
+fsv.setLegend("New Legend");
+```
+## Attributes
+|            Attribute            |            Description            |            Default            |
+ | ------------------------------- | -------------------------------   | --------------------------    |
+ | ```app:fsv_borderColor```|Border's Color|```#212121```|
+ | ```app:fsv_borderWidth```|Border's Width|```2px```|
+ | ```app:fsv_borderRadius```|Border's Radius|```0px```|
+ | ```app:fsv_borderAlpha```|Border's Alpha|```1```|
+ |```app:fsv_legend```|FieldSetView's Legend Text|```""```|
+ |```app:fsv_legendSize```|Legend's Text Size|```12sp```|
+ |```app:fsv_legendColor```|Legend's Text Color|```#212121```|
+ |```app:fsv_legendFont```|Legend's Text Font||
+ |```app:fsv_legendIcon```|FieldsetView's Icon||
+ |```app:fsv_legendIconTint```|Icon's Tint|```app:fsv_legend```'s Text Color|
+ |```app:fsv_legendPosition```|Legend's Position|```left``` ```center``` ```right```|
+ |```app:fsv_legendDirection```|Legend's Layout Direction|```ltr``` ```rtl```|
+ |```app:fsv_legendMarginLeft```|Legend's Left Margin|```16px``` if Position is ```Left```, ```0``` Otherwise|
+ |```app:fsv_legendMarginRight```|Legend's Right Margin|```16px``` if Position is ```Right```, ```0``` Otherwise|
+ |```app:fsv_legendPadding```|Legend's Left and Right Padding|```12px```|
+ |```app:fsv_legendPaddingLeft```|Legend's Left Padding|```12px```|
+ |```app:fsv_legendPaddingRight```|Legend's Right Padding|```12px```|
+ 
+## License
  ```
 Copyright 2018 mjn1369
 
