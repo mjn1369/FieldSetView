@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
+            android:padding="4dp"
             app:fsv_borderAlpha="0.75"
             app:fsv_legend="جنسیت"
             app:fsv_legendIcon="@drawable/ic_gender"
@@ -143,6 +143,30 @@
                         android:text="زن"/>
                 </RadioGroup>
             </RelativeLayout>
+
+        </libs.mjn.fieldset.FieldSetView>
+
+        <libs.mjn.fieldset.FieldSetView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            app:fsv_borderColor="#4CAF50"
+            app:fsv_borderRadius="6dp"
+            app:fsv_borderWidth="2dp"
+            app:fsv_legendIcon="@drawable/ic_password"
+            app:fsv_legendColor="#4CAF50"
+            app:fsv_legendPosition="center">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_password2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="Enter Password..."
+                android:inputType="textPassword"
+                android:textSize="14sp"></android.support.v7.widget.AppCompatEditText>
 
         </libs.mjn.fieldset.FieldSetView>
 

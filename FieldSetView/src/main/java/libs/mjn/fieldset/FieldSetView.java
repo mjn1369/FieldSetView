@@ -36,7 +36,7 @@ public class FieldSetView extends FrameLayout {
     private final int DEFAULT_BORDER_RADIUS = 0;
     private final String DEFAULT_BORDER_COLOR = "#212121";
     private final String DEFAULT_LEGEND_COLOR = "#212121";
-    private final int DEFAULT_LEGEND_MARGIN = 24;
+    private final int DEFAULT_LEGEND_MARGIN = 16;
     private final int DEFAULT_LEGEND_PADDING = 12;
     private final int DEFAULT_ICON_MARGIN = 8;
 
@@ -99,7 +99,6 @@ public class FieldSetView extends FrameLayout {
         mBackground.setBorder_radius((int) ta.getDimension(R.styleable.FieldSetView_fsv_borderRadius, DEFAULT_BORDER_RADIUS));
         //Border Alpha
         mBackground.setBorder_alpha(ta.getFloat(R.styleable.FieldSetView_fsv_borderAlpha, 1f));
-
         //Legend Margins and Paddings
         legendMarginLeft = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginLeft, DEFAULT_LEGEND_MARGIN);
         legendMarginRight = (int) ta.getDimension(R.styleable.FieldSetView_fsv_legendMarginRight, DEFAULT_LEGEND_MARGIN);
@@ -144,18 +143,21 @@ public class FieldSetView extends FrameLayout {
         switch (ta.getInt(R.styleable.FieldSetView_fsv_legendDirection, 1)) {
             case 1: //ltr
                 legendDirection = ENUM_LEGEND_DIRECTION.LTR;
-                View view = mLegendContainer.getChildAt(0);
-                ((LinearLayout.LayoutParams) view.getLayoutParams()).setMargins(0, 0, DEFAULT_ICON_MARGIN, 0);
+                if(hasLegendText()) {
+                    View view = mLegendContainer.getChildAt(0);
+                    ((LinearLayout.LayoutParams) view.getLayoutParams()).setMargins(0, 0, DEFAULT_ICON_MARGIN, 0);
+                }
                 break;
             case 2: //rtl
                 legendDirection = ENUM_LEGEND_DIRECTION.RTL;
-                view = mLegendContainer.getChildAt(0);
-                mLegendContainer.removeViewAt(0);
-                mLegendContainer.addView(view);
-                ((LinearLayout.LayoutParams) view.getLayoutParams()).setMargins(DEFAULT_ICON_MARGIN, 0, 0, 0);
+                if(hasLegendText()) {
+                    View view = mLegendContainer.getChildAt(0);
+                    mLegendContainer.removeViewAt(0);
+                    mLegendContainer.addView(view);
+                    ((LinearLayout.LayoutParams) view.getLayoutParams()).setMargins(DEFAULT_ICON_MARGIN, 0, 0, 0);
+                }
                 break;
         }
-
         //Icon
         Drawable icon_drawable = ta.getDrawable(R.styleable.FieldSetView_fsv_legendIcon);
         if (icon_drawable == null) {
@@ -169,40 +171,37 @@ public class FieldSetView extends FrameLayout {
             else
                 mIcon.setColorFilter(mLegend.getCurrentTextColor(), PorterDuff.Mode.SRC_IN);
         }
-
         mLegendContainer.post(new Runnable() {
             @Override
             public void run() {
                 //Setup border and icon dimensions relative to legend's text
-                if (mLegend.length() > 0) {
-                    // set the icon's sizes equal to text's height * 0.9
-                    if (mIcon.getVisibility() == VISIBLE) {
-                        mIcon.getLayoutParams().width = (int) (mLegend.getMeasuredHeight() * 0.9);
-                        mIcon.getLayoutParams().height = (int) (mLegend.getMeasuredHeight() * 0.9);
-                    }
-                    // if border's width is >= text's height, set the border's width to half of text's height
-                    if (mLegendContainer.getMeasuredHeight() <= mBackground.getBorder_width()) {
-                        mBackground.setBorder_width((int) (mLegendContainer.getMeasuredHeight() * 0.5));
-                        setContainerMargins(mBackground.getBorder_width());
-                    }
-                    // set margins and appropriate gravity
-                    if (legendPosition == ENUM_LEGEND_POSITION.RIGHT) {
-                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.RIGHT;
-                        int margin = mBackground.getBorder_width() >= mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
-                        ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(0, 0, margin + legendMarginRight, 0);
-                    } else if (legendPosition == ENUM_LEGEND_POSITION.LEFT) {
-                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.LEFT;
-                        int margin = mBackground.getBorder_width() >= mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
-                        ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(legendMarginLeft + margin, 0, 0, 0);
-                    } else {
-                        ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
-                    }
-                    // set the top border inline with legend
-                    LayoutParams frameParams = (LayoutParams) mFrame.getLayoutParams();
-                    frameParams.setMargins(0, (mLegendContainer.getMeasuredHeight() - mBackground.getBorder_width()) / 2, 0, 0);
-                    // draw the border
-                    updateFrame();
+                // set the icon's sizes equal to text's height * 0.9
+                if (mIcon.getVisibility() == VISIBLE) {
+                    mIcon.getLayoutParams().width = (int) (mLegend.getMeasuredHeight() * 0.9);
+                    mIcon.getLayoutParams().height = (int) (mLegend.getMeasuredHeight() * 0.9);
                 }
+                // if border's width is >= text's height, set the border's width to half of text's height
+                if (mLegendContainer.getMeasuredHeight() <= mBackground.getBorder_width()) {
+                    mBackground.setBorder_width((int) (mLegendContainer.getMeasuredHeight() * 0.5));
+                    setContainerMargins(mBackground.getBorder_width());
+                }
+                // set margins and appropriate gravity
+                if (legendPosition == ENUM_LEGEND_POSITION.RIGHT) {
+                    ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.RIGHT;
+                    int margin = mBackground.getBorder_width() >= mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
+                    ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(0, 0, margin + legendMarginRight, 0);
+                } else if (legendPosition == ENUM_LEGEND_POSITION.LEFT) {
+                    ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.LEFT;
+                    int margin = mBackground.getBorder_width() >= mBackground.getBorder_radius() ? mBackground.getBorder_width() + mBackground.getBorder_radius() : mBackground.getBorder_radius();
+                    ((LayoutParams) mLegendContainer.getLayoutParams()).setMargins(legendMarginLeft + margin, 0, 0, 0);
+                } else {
+                    ((LayoutParams) mLegendContainer.getLayoutParams()).gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+                }
+                // set the top border inline with legend
+                LayoutParams frameParams = (LayoutParams) mFrame.getLayoutParams();
+                frameParams.setMargins(0, (mLegendContainer.getMeasuredHeight() - mBackground.getBorder_width()) / 2, 0, 0);
+                // draw the border
+                updateFrame();
             }
         });
     }
@@ -257,7 +256,9 @@ public class FieldSetView extends FrameLayout {
                         bitmap = Bitmap.createBitmap(mFrame.getWidth(), mFrame.getHeight(), Bitmap.Config.ARGB_8888);
                         bitmapCanvas = new Canvas(bitmap);
                         mFrame.getBackground().draw(bitmapCanvas);
-                        eraseBitmap(bitmapCanvas, mLegendContainer);
+                        if (hasLegendText() || hasLegendIcon()) {
+                            eraseBitmap(bitmapCanvas, mLegendContainer);
+                        }
                         mFrame.setBackgroundDrawable(new BitmapDrawable(bitmap));
                         listenToResize = true;
                     }
@@ -284,6 +285,14 @@ public class FieldSetView extends FrameLayout {
         super.onDetachedFromWindow();
         if (bitmap != null)
             bitmap.recycle();
+    }
+
+    private boolean hasLegendText(){
+        return mLegend.getText().toString().trim().length()>0;
+    }
+
+    private boolean hasLegendIcon(){
+        return mIcon.getVisibility()!=GONE;
     }
 
     public void setLegend(String text) {

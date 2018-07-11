@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:includeFontPadding="false"
+            android:textSize="12sp"
             android:text="salam"/>
     </LinearLayout>
 </FrameLayout>
