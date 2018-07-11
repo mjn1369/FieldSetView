@@ -50,7 +50,7 @@ Add a ```FieldSetView``` to your layout just like any other ```ViewGroup``` :
             app:fsv_borderWidth="3dp"
             app:fsv_legend="Gender"
             app:fsv_legendColor="#C2185B"
-            app:fsv_legendFont="lobster.ttf"
+            app:fsv_legendFont="lobster.ttf"          <!-- Path to your font in Assets folder -->
             app:fsv_legendIcon="@drawable/ic_gender"
             app:fsv_legendIconTint="#C2185B"
             app:fsv_legendPosition="center"
