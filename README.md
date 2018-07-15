@@ -2,6 +2,8 @@
 [PlatformBadge]:  https://img.shields.io/badge/Platform-Android-blue.svg
 [ApiBadge]:       https://img.shields.io/badge/API-10%2B-blue.svg
 [ProjectLicenceUrl]:    http://www.apache.org/licenses/LICENSE-2.0
+[AndroidArsenalBadge]: https://img.shields.io/badge/Android%20Arsenal-FieldSetView-green.svg?style=flat
+[AndroidArsenalUrl]: https://android-arsenal.com/details/1/7030
 [LicenseBadge]:   https://img.shields.io/badge/License-Apache_v2.0-blue.svg
 [JitpackBadge]:   https://jitpack.io/v/mjn1369/fieldsetview.svg
 [JitpackUrl]:    https://jitpack.io/#mjn1369/fieldsetview
@@ -10,6 +12,7 @@
 [![Api][ApiBadge]][ProjectGithubUrl]
 [![License][LicenseBadge]][ProjectLicenceUrl]
 [![JitpackBadge]][JitpackUrl]
+[![AndroidArsenalBadge]][AndroidArsenalUrl]
 
 
 ```FieldSetView``` is an Android custom view which mimics the "fieldset" tag in HTML.
